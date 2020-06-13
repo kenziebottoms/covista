@@ -5,4 +5,4 @@ const get = (url) =>
     .then((response) => response.json())
     .catch((err) => console.log(err))
 
-export const getStates = () => get('states/info.json')
+export const getCurrentInfo = () => get('states/current.json')

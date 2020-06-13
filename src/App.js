@@ -2,7 +2,7 @@ import React, { useState, useEffect } from 'react'
 
 import './style.scss'
 
-import { getStates } from './CovidAPI'
+import { getCurrentInfo } from './CovidAPI'
 
 import Sidebar from './components/Sidebar'
 import Content from './components/Content'
@@ -12,7 +12,7 @@ function App() {
   const [data, setData] = useState({})
 
   useEffect(() => {
-    getStates().then((data) => setData({ states: data }))
+    getCurrentInfo().then((data) => setData({ states: data }))
   }, [])
 
   return (
