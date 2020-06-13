@@ -1,15 +1,15 @@
 import React, { useState } from 'react'
 
 export const CovidContext = React.createContext({
-  data: [],
+  data: null,
   setData: () => {},
-  activeState: {},
+  activeState: null,
   setActiveState: () => {},
 })
 
 export const CovidProvider = ({ children }) => {
-  const [data, setData] = useState([])
-  const [activeState, setActiveState] = useState({})
+  const [data, setData] = useState(null)
+  const [activeState, setActiveState] = useState(null)
 
   return (
     <CovidContext.Provider

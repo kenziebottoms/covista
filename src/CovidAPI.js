@@ -6,3 +6,4 @@ const get = (url) =>
     .catch((err) => console.log(err))
 
 export const getCurrentInfo = () => get('states/current.json')
+export const getStateInfo = (fips) => get(`states/${fips}/current.json`)
