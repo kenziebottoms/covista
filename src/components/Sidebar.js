@@ -1,5 +1,12 @@
-import React from 'react'
+import React, { useContext } from 'react'
+
+import { CovidContext } from '../CovidContext'
 
 export default function Sidebar() {
-  return <div id="sidebar">Sidebar</div>
+  const { data } = useContext(CovidContext)
+  return (
+    <div id="sidebar">
+      {data && data.map((state) => <div key={state.state}>{state.state}</div>)}
+    </div>
+  )
 }

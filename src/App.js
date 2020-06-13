@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from 'react'
+import React, { useContext, useEffect } from 'react'
 
 import './style.scss'
 
@@ -7,18 +7,19 @@ import { getCurrentInfo } from './CovidAPI'
 import Sidebar from './components/Sidebar'
 import Content from './components/Content'
 
+import { CovidContext } from './CovidContext'
+
 function App() {
-  const [activeState, setActiveState] = useState(0)
-  const [data, setData] = useState({})
+  const { setData } = useContext(CovidContext)
 
   useEffect(() => {
-    getCurrentInfo().then((data) => setData({ states: data }))
+    getCurrentInfo().then((data) => setData(data))
   }, [])
 
   return (
     <div className="App">
-      <Sidebar activeState={activeState} />
-      <Content activeState={activeState} data={data} />
+      <Sidebar />
+      <Content />
     </div>
   )
 }

@@ -12,13 +12,19 @@ body {
 }
 
 #sidebar {
-  padding: 1rem;
-  flex-basis: 30%;
+  flex-basis: auto;
   background: #f5f5f5;
+  div {
+    cursor: pointer;
+    padding: 0.5rem 1rem;
+    &:hover {
+      background: #e8e3ff;
+    }
+  }
 }
 
 #content {
-  flex-basis: 70%;
+  flex-basis: auto;
   padding: 3rem 4rem;
   table {
     border-collapse: collapse;

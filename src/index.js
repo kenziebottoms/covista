@@ -3,9 +3,13 @@ import ReactDOM from 'react-dom'
 import App from './App'
 import * as serviceWorker from './serviceWorker'
 
+import { CovidProvider } from './CovidContext'
+
 ReactDOM.render(
   <React.StrictMode>
-    <App />
+    <CovidProvider>
+      <App />
+    </CovidProvider>
   </React.StrictMode>,
   document.getElementById('root'),
 )
