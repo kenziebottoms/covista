@@ -10,54 +10,61 @@ export default function Content() {
   const activateState = (abbr) =>
     getStateInfo(abbr.toLowerCase()).then((data) => setActiveState(data))
 
+  const detailView = ({ state, dataQualityGrade, hospitalizedCurrently }) => (
+    <table className="activeState">
+      <tbody>
+        <tr>
+          <th colSpan="2">{state}</th>
+        </tr>
+        <tr>
+          <td>Data Quality</td>
+          <td>{dataQualityGrade}</td>
+        </tr>
+        <tr>
+          <td>Current Hospitalizations</td>
+          <td>{hospitalizedCurrently}</td>
+        </tr>
+      </tbody>
+    </table>
+  )
+
+  const masterView = (data) => (
+    <table>
+      <tbody>
+        <tr>
+          <th></th>
+          <th>Cases</th>
+          <th>Deaths</th>
+          <th>Positive Tests</th>
+          <th>Negative Tests</th>
+          <th>Total Tests</th>
+        </tr>
+        {data.map(
+          ({
+            state,
+            positiveCasesViral,
+            death,
+            positive,
+            negative,
+            totalTestsViral,
+          }) => (
+            <tr key={state} id={state} onClick={() => activateState(state)}>
+              <td>{state}</td>
+              <td>{positiveCasesViral}</td>
+              <td>{death}</td>
+              <td>{positive}</td>
+              <td>{negative}</td>
+              <td>{totalTestsViral}</td>
+            </tr>
+          ),
+        )}
+      </tbody>
+    </table>
+  )
+
   return (
     <div id="content">
-      {activeState ? (
-        <table className="activeState">
-          <tbody>
-            <tr>
-              <th colSpan="2">{activeState.state}</th>
-            </tr>
-            <tr>
-              <td>Data Quality</td>
-              <td>{activeState.dataQualityGrade}</td>
-            </tr>
-            <tr>
-              <td>Current Hospitalizations</td>
-              <td>{activeState.hospitalizedCurrently}</td>
-            </tr>
-          </tbody>
-        </table>
-      ) : (
-        data && (
-          <table>
-            <tbody>
-              <tr>
-                <th></th>
-                <th>Cases</th>
-                <th>Deaths</th>
-                <th>Positive Tests</th>
-                <th>Negative Tests</th>
-                <th>Total Tests</th>
-              </tr>
-              {data.map((state) => (
-                <tr
-                  key={state.state}
-                  id={state.state}
-                  onClick={() => activateState(state.state)}
-                >
-                  <td>{state.state}</td>
-                  <td>{state.positiveCasesViral}</td>
-                  <td>{state.death}</td>
-                  <td>{state.positive}</td>
-                  <td>{state.negative}</td>
-                  <td>{state.totalTestsViral}</td>
-                </tr>
-              ))}
-            </tbody>
-          </table>
-        )
-      )}
+      {activeState ? detailView(activeState) : data && masterView(data)}
     </div>
   )
 }
