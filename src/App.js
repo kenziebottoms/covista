@@ -9,12 +9,12 @@ import Content from './Content'
 
 import { CovidContext } from './CovidContext'
 
-function App() {
+export default function App() {
   const { setData } = useContext(CovidContext)
 
   useEffect(() => {
     getCurrentInfo().then((data) => setData(data))
-  }, [])
+  }, [setData])
 
   return (
     <div className="App">
@@ -23,5 +23,3 @@ function App() {
     </div>
   )
 }
-
-export default App
