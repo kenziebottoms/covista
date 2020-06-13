@@ -4,8 +4,8 @@ import './style.scss'
 
 import { getCurrentInfo } from './CovidAPI'
 
-import Sidebar from './components/Sidebar'
-import Content from './components/Content'
+import Sidebar from './Sidebar'
+import Content from './Content'
 
 import { CovidContext } from './CovidContext'
 

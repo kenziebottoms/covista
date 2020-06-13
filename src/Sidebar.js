@@ -1,8 +1,8 @@
 import React, { useContext } from 'react'
 
-import { CovidContext } from '../CovidContext'
+import { CovidContext } from './CovidContext'
 
-import { getStateInfo } from '../CovidAPI'
+import { getStateInfo } from './CovidAPI'
 
 export default function Sidebar() {
   const { data, activeState, setActiveState } = useContext(CovidContext)

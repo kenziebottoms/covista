@@ -1,6 +1,6 @@
 import React, { useContext } from 'react'
 
-import { CovidContext } from '../CovidContext'
+import { CovidContext } from './CovidContext'
 
 export default function Content() {
   const { data, activeState } = useContext(CovidContext)
