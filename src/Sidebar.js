@@ -18,15 +18,15 @@ export default function Sidebar() {
   return (
     <div id="sidebar">
       {data &&
-        data.map((state) => (
+        data.map(({ state }) => (
           <div
             className={
-              activeState && state.state === activeState.state ? 'active' : ''
+              activeState && state === activeState.state ? 'active' : ''
             }
-            onClick={() => activateState(state.state)}
-            key={state.state}
+            onClick={() => activateState(state)}
+            key={state}
           >
-            {state.state}
+            {state}
           </div>
         ))}
     </div>
