@@ -2,8 +2,14 @@ import React, { useContext } from 'react'
 
 import { CovidContext } from './CovidContext'
 
+import { getStateInfo } from './CovidAPI'
+
 export default function Content() {
-  const { data, activeState } = useContext(CovidContext)
+  const { data, activeState, setActiveState } = useContext(CovidContext)
+
+  const activateState = (abbr) =>
+    getStateInfo(abbr.toLowerCase()).then((data) => setActiveState(data))
+
   return (
     <div id="content">
       {activeState ? (
@@ -35,7 +41,11 @@ export default function Content() {
                 <th>Total Tests</th>
               </tr>
               {data.map((state) => (
-                <tr key={state.state} id={state.state}>
+                <tr
+                  key={state.state}
+                  id={state.state}
+                  onClick={() => activateState(state.state)}
+                >
                   <td>{state.state}</td>
                   <td>{state.positiveCasesViral}</td>
                   <td>{state.death}</td>
