@@ -7,7 +7,7 @@ export default function Content() {
   return (
     <div id="content">
       {activeState ? (
-        <table class="activeState">
+        <table className="activeState">
           <tbody>
             <tr>
               <th colSpan="2">{activeState.state}</th>

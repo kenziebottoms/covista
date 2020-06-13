@@ -20,6 +20,9 @@ body {
     &:hover {
       background: #e8e3ff;
     }
+    &.active {
+      background: #d5cff5;
+    }
   }
 }
 
